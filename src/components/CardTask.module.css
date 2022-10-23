@@ -1,0 +1,153 @@
+.task {
+    position: relative;
+    width: min(50rem, 100%);
+    min-height: 8rem;
+    background-color: var(--neutral-700);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: .4rem;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+}
+.task strong {
+    overflow: hidden;
+    max-width: 95%;
+    color: var(--neutral-300);
+}
+.task small {
+    cursor: default;
+    position: absolute;
+    right: 3%;
+    bottom: 10%;
+    color: var(--neutral-300);
+}
+
+.settings {
+    position: absolute;
+    top: 8%;
+    right: 2%;
+}
+
+.dialog_overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgb(44 44 44 / 38%);
+}
+.dialog_content {
+    width: min(80%, 40rem);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2.5rem;
+    border-radius: .4rem;
+    background-color: var(--white);
+    color: var(--neutral-900);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow:  rgb(14 18 22 / 35%) 0px 10px 38px -10px, rgb(14 18 22 / 20%) 0px 10px 20px -15px;
+}
+.dialog_content h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+.dialog_content p {
+    font-size: 1.4rem;
+    color: var(--neutral-500);
+}
+.container_btn {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1.5rem;
+}
+.dialog_btn {
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    border: none;
+    border-radius: .4rem;
+    border: #6f6e7727 1.2px solid;
+    padding: 1rem 1.5rem;
+    background-color: #eeedef;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #6f6e77;
+}
+.dialog_btn:focus {
+    border: #6f6e7742 2px solid;
+}
+.dialog_btn_delete {
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    border: none;
+    border-radius: .4rem;
+    padding: 1rem 1.5rem;
+    border: #fb718638 2px solid;
+    background-color: var(--rose-200);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--rose-400);
+}
+.dialog_btn_delete:focus {
+    border: #fb7185 2px solid;
+}
+
+.popover_trigger {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    background: none;
+    border: none;
+    border-radius: .4rem;
+    color: var(--neutral-300);
+    transition: all .2s;
+}
+.popover_trigger:hover {
+    color: var(--white);
+    background-color: var(--neutral-600);
+}
+.popover_ancor {
+    position: absolute;
+    left: 50%;
+    top: 130%;
+    transform: translate(-50%, -50%);
+}
+.popover_content {
+    width: 15rem;
+    position: relative;
+    padding: 1rem;
+    background-color: var(--neutral-600);
+    border-radius: .4rem;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    box-shadow:  rgb(14 18 22 / 35%) 0px 10px 38px -10px, rgb(14 18 22 / 20%) 0px 10px 20px -15px;
+}
+.popover_content button {
+    color: var(--neutral-300);
+    font-weight: 600;
+}
+.popover_close {
+    cursor: pointer;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background: none;
+    border: none;
+    color: var(--neutral-300);
+}
+.popover_arrow {
+    fill: var(--neutral-600);
+    height: .6rem;
+    width: 1.5rem;
+}

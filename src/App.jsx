@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { useState, useReducer } from "react";
-import { CardTask } from "./components/CardTask";
+import { CardTask } from "../src/components/CardTask/CardTask";
 
 function App() {
   function handleAddTask(event) {

@@ -1,0 +1,108 @@
+.popover_trigger {
+  cursor: pointer;
+  position: absolute;
+  top: 13%;
+  right: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  background: var(--neutral-700);
+  border: none;
+  border-radius: 0.4rem;
+  color: var(--neutral-300);
+  transition: all 0.2s;
+}
+.popover_trigger:hover {
+  color: var(--white);
+  background-color: var(--neutral-600);
+}
+.popover_ancor {
+  position: absolute;
+  left: 50%;
+  top: 130%;
+  transform: translate(-50%, -50%);
+}
+.popover_content {
+  width: 15rem;
+  position: relative;
+  padding: 1rem;
+  background-color: var(--neutral-600);
+  border-radius: 0.4rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgb(14 18 22 / 35%) 0px 10px 38px -10px,
+    rgb(14 18 22 / 20%) 0px 10px 20px -15px;
+  margin-right: 1rem;
+  animation-name: dropdown;
+  animation-duration: 0.4s;
+  animation-iteration-count: ease-in;
+  animation-timing-function: ease;
+}
+.popover_content button {
+  color: var(--neutral-300);
+  font-weight: 600;
+}
+.popover_content .container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.popover_content .box_btn {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 0.3rem;
+  background-color: var(--neutral-500);
+  border-radius: 0.4rem;
+  border: 2px solid #49494944;
+  outline: none;
+  padding: 0.5rem;
+  transition: all 0.3s;
+}
+.popover_content .box_btn:hover,
+.popover_content .box_btn:focus {
+  border: 2px solid #49494998;
+}
+.popover_content .box_btn span {
+  margin-left: 1rem;
+}
+.popover_close {
+  cursor: pointer;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  background: none;
+  border-radius: 0.4rem;
+  border: 2px solid transparent;
+  padding: 0.2rem;
+  outline: none;
+  color: var(--neutral-300);
+  transition: all 0.3s;
+}
+.popover_close:focus {
+  color: var(--neutral-100);
+  border: 1px solid #71717ad5;
+}
+.popover_arrow {
+  fill: var(--neutral-600);
+  height: 0.6rem;
+  width: 1.5rem;
+  margin-right: 1rem;
+}
+
+@keyframes dropdown {
+  0% {
+    transform: translateY(-5%);
+    opacity: 0%;
+  }
+  80% {
+    opacity: 100%;
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}

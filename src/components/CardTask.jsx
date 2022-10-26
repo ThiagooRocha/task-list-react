@@ -1,7 +1,15 @@
 import styles from "./CardTask.module.css";
 import { useState } from "react";
-import { Trash, Pencil, FrameCorners, DotsThree, X } from "phosphor-react";
+import {
+  Check,
+  Trash,
+  Pencil,
+  FrameCorners,
+  DotsThree,
+  X,
+} from "phosphor-react";
 
+import * as Checkbox from "@radix-ui/react-checkbox";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Popover from "@radix-ui/react-popover";
@@ -15,18 +23,39 @@ export const CardTask = ({
   editTextTask,
   setEditTextTask,
 }) => {
+  const [isCompletedTask, setIsCompletedTask] = useState(false);
+
   return (
-    <div className={styles.task}>
-      <strong>{text}</strong>
-      <small>{time}</small>
+    <div className={!isCompletedTask ? styles.task : styles.completed_task}>
+      <CheckboxTask
+        deleteTask={deleteTask}
+        isCompletedTask={isCompletedTask}
+        setIsCompletedTask={setIsCompletedTask}
+      />
+      <strong className={styles.text}>{text}</strong>
+      <small className={styles.time}>{time}</small>
       <PopoverBox
         deleteTask={deleteTask}
         editTask={editTask}
         valueText={valueText}
-        editTextTask={editTextTask}
         setEditTextTask={setEditTextTask}
       />
     </div>
+  );
+};
+
+const CheckboxTask = ({ deleteTask, setIsCompletedTask }) => {
+  function completedTask() {
+    setTimeout(deleteTask, 1000);
+    setIsCompletedTask(true);
+  }
+
+  return (
+    <Checkbox.Root className={styles.checkbox_root} onClick={completedTask}>
+      <Checkbox.Indicator>
+        <Check size={12} weight="bold" />
+      </Checkbox.Indicator>
+    </Checkbox.Root>
   );
 };
 
@@ -61,7 +90,7 @@ const DialogAlert = ({ deleteTask }) => {
   );
 };
 
-const DialogEdit = ({ editTask, valueText, editTextTask ,setEditTextTask }) => {
+const DialogEdit = ({ editTask, valueText, editTextTask, setEditTextTask }) => {
   const [open, setOpen] = useState(null);
 
   return (
@@ -83,10 +112,10 @@ const DialogEdit = ({ editTask, valueText, editTextTask ,setEditTextTask }) => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              console.log(editTextTask)
-              if(editTextTask !== ""){
+              console.log(editTextTask);
+              if (editTextTask !== "") {
                 setOpen(false);
-                setEditTextTask("")
+                setEditTextTask("");
               }
             }}
           >
@@ -108,7 +137,13 @@ const DialogEdit = ({ editTask, valueText, editTextTask ,setEditTextTask }) => {
   );
 };
 
-const PopoverBox = ({ deleteTask, editTask, valueText, editTextTask, setEditTextTask }) => {
+const PopoverBox = ({
+  deleteTask,
+  editTask,
+  valueText,
+  editTextTask,
+  setEditTextTask,
+}) => {
   return (
     <Popover.Root>
       <div className={styles.settings}>

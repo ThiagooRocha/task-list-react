@@ -5,7 +5,8 @@
 
 ## About 📖
 <p>Task-List with react. </p>
-<p>The goal of this project is to put my knowledge in react into practice using hooks and components accessible with radix-ui.</p>
+
+The goal of this project is to put my knowledge in `REACT` into practice using hooks and components accessible with `radix-ui`.
 
 ### Features:
 + Add new Task

@@ -1,72 +1,37 @@
-import "./App.css";
-
-import { useState, useReducer } from "react";
+import { useState, useContext } from "react";
 import { CardTask } from "../src/components/CardTask/CardTask";
 
+import { TaskActionsContext } from "../src/context/TaskActionsContext";
+
 function App() {
-  function handleAddTask(event) {
+  const { tasks, dispatchTasks } = useContext(TaskActionsContext);
+
+  const [textTask, setTextTask] = useState("");
+  const [editTextTask, setEditTextTask] = useState("");
+
+  function handleAddTask(event, textTask) {
     event.preventDefault();
     if (textTask !== "") {
-      dispatchTasks({ type: "ADD" });
+      dispatchTasks({ type: "ADD", text: textTask });
+      setTextTask("");
     }
   }
 
-  function editTask(task) {
-    dispatchTasks({ type: "EDIT", id: task });
+  function editTask(task, editTextTask) {
+    dispatchTasks({ type: "EDIT", id: task, text: editTextTask });
   }
 
   function deleteTask(taskId) {
     dispatchTasks({ type: "DELETE", id: taskId });
   }
 
-  const tasksReducer = (state, action) => {
-    const dateFormat = new Date().toLocaleTimeString("pt-br", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    });
-
-    switch (action.type) {
-      case "ADD":
-        const newTask = {
-          id: dateFormat + ":" + new Date().getMilliseconds(),
-
-          time: dateFormat,
-
-          text: textTask,
-        };
-        setTextTask("");
-        return [...state, newTask];
-
-      case "EDIT":
-        state.filter((task) => {
-          let taskId = task.id === action.id;
-          if (taskId) {
-            if (editTextTask !== "") {
-              task.text = editTextTask;
-            }
-          }
-        });
-        return [...state];
-
-      case "DELETE":
-        return state.filter((task) => task.id !== action.id);
-
-      default:
-        return [state];
-    }
-  };
-
-  const [textTask, setTextTask] = useState("");
-  const [editTextTask, setEditTextTask] = useState("");
-  const [tasks, dispatchTasks] = useReducer(tasksReducer, []);
-
   return (
     <div className="container">
       <header>
         <h2>Hello!</h2>
       </header>
-      <form onSubmit={handleAddTask}>
+
+      <form onSubmit={(e) => handleAddTask(e, textTask)}>
         <input
           type="text"
           value={textTask}
@@ -75,6 +40,7 @@ function App() {
         />
         <button className="btn">Enviar</button>
       </form>
+
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>
@@ -82,7 +48,7 @@ function App() {
               text={task.text}
               time={task.time}
               editTask={() => {
-                editTask(task.id);
+                editTask(task.id, editTextTask);
               }}
               valueText={task.text}
               deleteTask={() => {

@@ -11,7 +11,7 @@
 }
 .text {
     overflow: hidden;
-    max-width: 95%;
+    max-width: 85%;
     color: var(--neutral-300);
 }
 .time {
@@ -47,11 +47,10 @@
     background-color: var(--emerald-700);
     animation: line-checkedTask .9s forwards;
 }
-.completed_task .text, .completed_task .time, .completed_task .popover_trigger {
+.completed_task .text, .completed_task .time{
     color: var(--neutral-500);
     background-color: transparent;
 }
-
 .settings {
     position: absolute;
     top: 8%;
@@ -67,8 +66,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
-    height: 2rem;
+    min-width: 2rem;
+    min-height: 2rem;
     border: 2px var(--neutral-600) solid;
     border-radius: .4rem;
     transition: all 0.2s;

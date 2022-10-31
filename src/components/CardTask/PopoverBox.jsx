@@ -40,10 +40,6 @@ export const PopoverBox = ({
 
             <DialogAlert deleteTask={deleteTask} />
 
-            <button className={styles.box_btn}>
-              <FrameCorners size={22} weight="bold" />
-              <span>Ver tarefa</span>
-            </button>
           </div>
         </Popover.Content>
       </Popover.Portal>
